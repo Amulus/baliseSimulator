@@ -24,5 +24,5 @@ public class GrSatelitte extends GrElementMobile {
 		this.addElement(new GImage(rawImage));
 		this.setDimension(new Dimension(rawImage.getWidth(), rawImage.getHeight()));
 	}
-	
+
 }

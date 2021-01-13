@@ -28,34 +28,31 @@ public class GrBalise extends GrElementMobile implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("Identifiant : "+model);
-		System.out.println("Pourcentage complétion :"+ Math.round(((float)model.dataSize()/(float)model.memorySize())*100.0));
-		
+
+		System.out.println("Identifiant : " + model);
+		System.out.println("Pourcentage complétion :"
+				+ Math.round(((float) model.dataSize() / (float) model.memorySize()) * 100.0));
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 }
