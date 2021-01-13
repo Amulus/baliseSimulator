@@ -10,17 +10,17 @@ public class GLine extends GElement {
 	Point from;
 	Point to;
 	Stroke stroke;
-	
+
 	public GLine(Point from, Point to) {
 		this.from = from;
 		this.to = to;
 		stroke = new BasicStroke();
 	}
-	
+
 	public GLine(int fromX, int fromY, int toX, int toY) {
 		this(new Point(fromX, fromY), new Point(toX, toY));
 	}
-	
+
 	@Override
 	public void draw(Graphics2D g) {
 		Stroke previousStroke = g.getStroke();
@@ -37,7 +37,7 @@ public class GLine extends GElement {
 	public void setStroke(Stroke stroke) {
 		this.stroke = stroke;
 	}
-	
+
 	public void setWidth(float w) {
 		setStroke(new BasicStroke(w));
 	}

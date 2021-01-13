@@ -42,7 +42,7 @@ public class GSpace extends JPanel implements GContainer, KeyListener, MouseList
 		JFrame frame = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, this);
 		frame.pack();
 	}
-	
+
 	public void open() {
 		JFrame frame = new JFrame(name);
 		WindowAdapter wa = new WindowAdapter() {
@@ -70,11 +70,11 @@ public class GSpace extends JPanel implements GContainer, KeyListener, MouseList
 	public void setColor(Color c) {
 		setBackground(c);
 	}
-	
+
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
-		GElement [] elems = (GElement[]) elements.toArray(new GElement[elements.size()]);
+		GElement[] elems = elements.toArray(new GElement[elements.size()]);
 		for (int n = 0; n < elems.length; n++) {
 			elems[n].draw(g2d);
 		}
@@ -83,7 +83,7 @@ public class GSpace extends JPanel implements GContainer, KeyListener, MouseList
 	public void addKeyListener(KeyListener k) {
 		keyListeners.add(k);
 	}
-	
+
 	public void clear() {
 		for (Iterator<GElement> iter = elements.iterator(); iter.hasNext();) {
 			iter.next().setContainer(null);
@@ -143,7 +143,7 @@ public class GSpace extends JPanel implements GContainer, KeyListener, MouseList
 		return null;
 	}
 
-	public GElement [] getRawContents() {
+	public GElement[] getRawContents() {
 		return elements.toArray(new GElement[elements.size()]);
 	}
 
