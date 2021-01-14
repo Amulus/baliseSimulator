@@ -20,6 +20,10 @@ public class ElementMobile {
 		this.position = new Point(0, 0);
 	}
 
+	public void registerBaliseParSatellite(Balise b) {
+		
+	}
+	
 	public int dataSize() {
 		return this.dataSize;
 	}
@@ -92,5 +96,11 @@ public class ElementMobile {
 	public Manager getManager() {
 		return manager;
 	}
+
+	public void unregisterBaliseParSatellite(Balise b) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
