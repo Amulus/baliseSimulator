@@ -10,4 +10,11 @@ public class Satelitte extends ElementMobile {
 		super.bouge();
 		this.send(new SatelitteMoved(this));		
 	}
+	
+	public void registerBaliseParSatellite(Balise b) {
+		this.registerListener(SatelitteMoved.class, b);
+	}
+	public void unregisterBaliseParSatellite(Balise b) {
+		this.unregisterListener(SatelitteMoved.class, b);
+	}
 }

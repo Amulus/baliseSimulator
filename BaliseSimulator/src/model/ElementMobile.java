@@ -20,6 +20,10 @@ public class ElementMobile {
 		this.position = new Point(0, 0);
 	}
 
+	public void registerBaliseParSatellite(Balise b) {
+		
+	}
+	
 	public int dataSize() {
 		return this.dataSize;
 	}
@@ -79,18 +83,17 @@ public class ElementMobile {
 	}
 
 	public void setDeplacement(Deplacement depl) {
-		/*try {
-			if (this.depl.getClass().equals(DeplSynchronisation.class)  ) {
-				this.resetData();
-			}
-		}catch(Exception e) {
-			
-		}*/
 		this.depl = depl;
 	}
 
 	public Manager getManager() {
 		return manager;
 	}
+
+	public void unregisterBaliseParSatellite(Balise b) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
