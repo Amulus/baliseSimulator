@@ -83,13 +83,6 @@ public class ElementMobile {
 	}
 
 	public void setDeplacement(Deplacement depl) {
-		/*try {
-			if (this.depl.getClass().equals(DeplSynchronisation.class)  ) {
-				this.resetData();
-			}
-		}catch(Exception e) {
-			
-		}*/
 		this.depl = depl;
 	}
 
