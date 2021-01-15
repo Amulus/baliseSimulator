@@ -1,6 +1,5 @@
 package graphicLayer;
 
-
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -9,7 +8,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public  class GBounded extends GElement implements GContainer{
+public class GBounded extends GElement implements GContainer {
 	protected Point position;
 	protected Dimension dim;
 	protected List<GElement> subElements = new ArrayList<GElement>();
@@ -19,19 +18,19 @@ public  class GBounded extends GElement implements GContainer{
 		this.position = new Point(0, 0);
 		this.dim = new Dimension(20, 20);
 	}
-	
+
 	public void addMouseListener(MouseListener k) {
 		mouseListeners.add(k);
 	}
-			
+
 	public Point getPosition() {
 		return position;
 	}
-	
+
 	public void setPosition(Point p) {
 		position = p;
 	}
-	
+
 	public Point getGlobalPosition() {
 		Point p = this.getPosition();
 		if (container == null) {
@@ -40,7 +39,7 @@ public  class GBounded extends GElement implements GContainer{
 		p.translate(container.getGlobalPosition().x, container.getGlobalPosition().y);
 		return p;
 	}
-	
+
 	public int getX() {
 		return (getPosition().x);
 	}
@@ -61,13 +60,13 @@ public  class GBounded extends GElement implements GContainer{
 
 	public void translate(Point gap) {
 		Point p = getPosition();
-		this.setPosition(new Point(p.x+gap.x, p.y+gap.y));
+		this.setPosition(new Point(p.x + gap.x, p.y + gap.y));
 	}
-	
-	public GElement [] getRawContents() {
+
+	public GElement[] getRawContents() {
 		return subElements.toArray(new GElement[subElements.size()]);
 	}
-	
+
 	public void drawContents(Graphics2D g) {
 		if (subElements.isEmpty()) {
 			return;
@@ -75,7 +74,7 @@ public  class GBounded extends GElement implements GContainer{
 		Shape currentClip = g.getClipBounds();
 		g.setClip(getX(), getY(), getWidth(), getHeight());
 		g.translate(getX(), getY());
-		GElement [] subs = this.getRawContents();
+		GElement[] subs = this.getRawContents();
 		for (int n = 0; n < subs.length; n++) {
 			GElement m = subs[n];
 			m.draw(g);
@@ -83,7 +82,7 @@ public  class GBounded extends GElement implements GContainer{
 		g.translate(-getX(), -getY());
 		g.setClip(currentClip);
 	}
-	
+
 	public void draw(Graphics2D g) {
 		Rectangle bounds = this.getBounds();
 		Color c = g.getColor();
@@ -92,7 +91,7 @@ public  class GBounded extends GElement implements GContainer{
 		drawContents(g);
 		g.setColor(c);
 	}
-	
+
 	public Rectangle getBounds() {
 		return new Rectangle(this.getPosition(), this.getDimension());
 	}
@@ -123,6 +122,7 @@ public  class GBounded extends GElement implements GContainer{
 		m.setContainer(this);
 		subElements.add(m);
 	}
+
 	public void removeElement(GElement m) {
 		if (m.getContainer() == null)
 			return;
@@ -138,7 +138,6 @@ public  class GBounded extends GElement implements GContainer{
 		subElements.clear();
 	}
 
-	
 	public int getWidth() {
 		return (int) dim.getWidth();
 	}
@@ -147,6 +146,7 @@ public  class GBounded extends GElement implements GContainer{
 		return (int) dim.getHeight();
 	}
 
+	@Override
 	public void dispatchMouseClicked(MouseEvent e) {
 		if (!getBounds().contains(e.getPoint())) {
 			return;
@@ -163,6 +163,7 @@ public  class GBounded extends GElement implements GContainer{
 		e.translatePoint(getX(), getY());
 	}
 
+	@Override
 	public void dispatchMousePressed(MouseEvent e) {
 		if (!getBounds().contains(e.getPoint())) {
 			return;
@@ -179,6 +180,7 @@ public  class GBounded extends GElement implements GContainer{
 		e.translatePoint(getX(), getY());
 	}
 
+	@Override
 	public void dispatchMouseReleased(MouseEvent e) {
 		if (!getBounds().contains(e.getPoint())) {
 			return;
@@ -195,6 +197,7 @@ public  class GBounded extends GElement implements GContainer{
 		e.translatePoint(getX(), getY());
 	}
 
+	@Override
 	public void dispatchMouseEntered(MouseEvent e) {
 		if (!getBounds().contains(e.getPoint())) {
 			return;
@@ -211,6 +214,7 @@ public  class GBounded extends GElement implements GContainer{
 		e.translatePoint(getX(), getY());
 	}
 
+	@Override
 	public void dispatchMouseExited(MouseEvent e) {
 		if (!getBounds().contains(e.getPoint())) {
 			return;
@@ -226,7 +230,7 @@ public  class GBounded extends GElement implements GContainer{
 		}
 		e.translatePoint(getX(), getY());
 	}
-	
+
 	public void whenMouseClicked(MouseEvent e) {
 		for (Iterator<MouseListener> iter = mouseListeners.iterator(); iter.hasNext();) {
 			MouseListener mouseListener = iter.next();
@@ -262,5 +266,4 @@ public  class GBounded extends GElement implements GContainer{
 		}
 	}
 
-	
 }

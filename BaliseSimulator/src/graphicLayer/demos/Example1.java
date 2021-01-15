@@ -1,7 +1,7 @@
 
 package graphicLayer.demos;
 
-import java.awt.Color; 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.Random;
@@ -11,18 +11,18 @@ import graphicLayer.GElement;
 import graphicLayer.GOval;
 import graphicLayer.GSpace;
 
-public class Example1 { 
+public class Example1 {
 
 	public static void main(String[] args) {
 		Random x = new Random();
 		GSpace w = new GSpace("Ecran qui rend fou", new Dimension(800, 600));
 		GBounded gb = new GBounded();
-		gb.setPosition(new Point(100,100));
+		gb.setPosition(new Point(100, 100));
 		gb.setDimension(new Dimension(400, 300));
 		gb.setColor(Color.gray);
-		
+
 		w.addElement(gb);
-		
+
 		int width = gb.getWidth();
 		int height = gb.getHeight();
 		for (int i = 0; i < 2000; i++) {
@@ -39,7 +39,7 @@ public class Example1 {
 			Point gap = new Point(x.nextInt(11), x.nextInt(11));
 			gap.translate(-5, -5);
 			gb.translate(gap);
-			GElement [] elements = gb.getRawContents();
+			GElement[] elements = gb.getRawContents();
 			for (int i = 0; i < elements.length; i++) {
 				GBounded next = (GBounded) elements[i];
 				gap = new Point(x.nextInt(9), x.nextInt(9));

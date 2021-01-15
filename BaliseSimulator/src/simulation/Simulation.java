@@ -8,20 +8,17 @@ import graphicLayer.GBounded;
 import graphicLayer.GRect;
 import graphicLayer.GSpace;
 import model.Balise;
-import model.DeplHorizontal;
+import model.DeplAleatoire;
 import model.DeplSatellite;
-import model.DeplSinusoidal;
-import model.DeplVertical;
 import model.Deplacement;
-import model.Manager;
 import model.Manager;
 import model.Satelitte;
 
 public class Simulation {
 
 	Manager manager = new Manager();
-	GSpace world = new GSpace("Satellite & Balises", new Dimension(800, 600));
-	
+	GSpace world = new GSpace("Satellite & Balises", new Dimension(1000, 800));
+
 	public void mainLoop() {
 		while (true) {
 			manager.tick();
@@ -32,8 +29,8 @@ public class Simulation {
 			}
 		}
 	}
-	
-	public void addBalise(GBounded sea, int memorySize, Point startPos, Deplacement depl) {		
+
+	public void addBalise(GBounded sea, int memorySize, Point startPos, Deplacement depl) {
 		Balise bal = new Balise(memorySize);
 		bal.setPosition(startPos);
 		bal.setDeplacement(depl);
@@ -43,7 +40,7 @@ public class Simulation {
 		sea.addElement(grbal);
 	}
 
-	public void addSatelitte(GBounded sky, int memorySize, Point startPos, int vitesse) {		
+	public void addSatelitte(GBounded sky, int memorySize, Point startPos, int vitesse) {
 		Satelitte sat = new Satelitte(memorySize);
 		sat.setPosition(startPos);
 		sat.setDeplacement(new DeplSatellite(-10,1000, vitesse));
@@ -52,28 +49,29 @@ public class Simulation {
 		grSat.setModel(sat);
 		sky.addElement(grSat);
 	}
-	
-	public void launch( ) {
+
+	public void launch() {
+		DeplAleatoire deplRand = new DeplAleatoire();
 		GRect sky = new GRect();
 		sky.setColor(Color.WHITE);
-		sky.setDimension(new Dimension(800, 300));
+		sky.setDimension(new Dimension(1000, 300));
 		GRect sea = new GRect();
 		sea.setColor(Color.blue);
-		sea.setDimension(new Dimension(800, 300));
+		sea.setDimension(new Dimension(1000, 500));
 		sea.setPosition(new Point(0, 300));
 		this.world.addElement(sky);
 		this.world.addElement(sea);
-		this.addSatelitte(sky, 100000, new Point(10,50), 2);
-		this.addSatelitte(sky, 100000, new Point(100,10), 1);
-		this.addSatelitte(sky, 100000, new Point(400,90), 3);
-		this.addSatelitte(sky, 100000, new Point(500,140), 4);
-		this.addSatelitte(sky, 100000, new Point(600,10), 1);
-		this.addBalise(sea, 300, new Point(400,200), new DeplHorizontal(50,750));
-		this.addBalise(sea, 400, new Point(100,100), new DeplVertical(50, 200));
-		this.addBalise(sea, 200, new Point(0,160), new DeplHorizontal(0,800));
-		this.addBalise(sea, 500, new Point(200,100), new DeplVertical(130, 270));
-		this.addBalise(sea, 150, new Point(300,100), new DeplHorizontal(200, 600));
-		this.addBalise(sea, 300, new Point(300,100), new DeplSinusoidal(250, 150, 200, 600));
+		this.addSatelitte(sky, 100000, new Point(10, 50), 2);
+		this.addSatelitte(sky, 100000, new Point(100, 10), 1);
+		this.addSatelitte(sky, 100000, new Point(400, 90), 3);
+		this.addSatelitte(sky, 100000, new Point(500, 140), 4);
+		this.addSatelitte(sky, 100000, new Point(600, 10), 1);
+		this.addBalise(sea, 300, new Point(400, 200), deplRand.dep(200, 600));
+		this.addBalise(sea, 400, new Point(100, 100), deplRand.dep(50, 200));
+		this.addBalise(sea, 200, new Point(0, 160), deplRand.dep(0, 800));
+		this.addBalise(sea, 500, new Point(200, 100), deplRand.dep(130, 270));
+		this.addBalise(sea, 150, new Point(300, 100), deplRand.dep(200, 600));
+		this.addBalise(sea, 300, new Point(300, 100), deplRand.dep(100, 500));
 		this.world.open();
 		this.mainLoop();
 	}

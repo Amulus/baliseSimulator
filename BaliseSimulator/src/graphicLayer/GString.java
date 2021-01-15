@@ -10,22 +10,23 @@ public class GString extends GBounded {
 	Font font;
 	FontMetrics metrics;
 	String str = "";
-	
-	public GString() { }
-	
+
+	public GString() {
+	}
+
 	public GString(String str) {
 		this.str = str;
 	}
-	
+
 	private void ensureFont(Graphics2D g) {
 		if (font == null) {
 			font = g.getFont();
 		}
 		if (metrics == null) {
 			metrics = g.getFontMetrics(font);
-		}		
+		}
 	}
-	
+
 	@Override
 	public void draw(Graphics2D g) {
 		ensureFont(g);
@@ -37,16 +38,16 @@ public class GString extends GBounded {
 		g.setFont(previousFont);
 		g.setColor(previousColor);
 	}
-	
+
 	public void setString(String s) {
 		str = s;
 	}
-	
+
 	public void setFont(Font font) {
 		this.font = font;
 		this.metrics = null;
 	}
-	
+
 	public Dimension getDimension() {
 		int hgt = metrics.getAscent();
 		int adv = metrics.stringWidth(str);
