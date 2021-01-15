@@ -13,7 +13,7 @@ import model.DeplVertical;
 import model.Manager;
 import model.Satelitte;
 
-public class TestModel {
+public class TestUni {
 
 	@Test
 	public void testBalise() {
@@ -26,13 +26,7 @@ public class TestModel {
 			bal.bouge();
 			bal.tick();
 		}
-		
-		  System.out.println(bal.getPosition().x+" ,"+bal.getPosition().y);
-		  System.out.println(bal.memorySize()); 
-		  System.out.println(bal.profondeur());
-		  System.out.println(bal.dataSize());
 		 
-
 		Assert.assertEquals(bal.profondeur(), 266);
 		Assert.assertTrue(bal.getPosition().equals(new Point(400, 266)));
 		Assert.assertTrue(bal.memorySize() == 300);
@@ -65,12 +59,6 @@ public class TestModel {
 		sat.setDeplacement(new DeplSatellite(-10, 1000, 2));
 		sat.bouge();
 		sat.tick();
-		/*
-		 * System.out.println(sat.getPosition().x+" ,"+sat.getPosition().y);
-		 * System.out.println(sat.memorySize());
-		 * 
-		 */
-
 		Assert.assertTrue(sat.getPosition().equals(new Point(14, 50)));
 		Assert.assertTrue(sat.memorySize() == 100000);
 	}
@@ -84,17 +72,11 @@ public class TestModel {
 		Satelitte sat = new Satelitte(100000);
 		sat.setPosition(new Point(10, 50));
 		sat.setDeplacement(new DeplSatellite(-10, 1000, 2));
-		manager.addBalise(bal);
+		manager.addElementMobile(bal);
 		manager.tick();
-		manager.addSatellite(sat);
+		manager.addElementMobile(sat);
 		manager.tick();
 		
-//		System.out.println(sat.getPosition().x+" ,"+sat.getPosition().y);
-//		System.out.println(sat.memorySize());
-//		System.out.println("---------");
-//		System.out.println(bal.getPosition().x+" ,"+bal.getPosition().y);
-//		System.out.println(bal.memorySize()); System.out.println(bal.profondeur());
-//		System.out.println(bal.dataSize());
 		Assert.assertTrue(sat.getPosition().equals(new Point(12, 50)));
 		Assert.assertTrue(bal.getPosition().equals(new Point(414, 200)));
 
