@@ -5,7 +5,7 @@ import java.awt.Point;
 import eventHandler.AbstractEvent;
 import eventHandler.EventHandler;
 
-public class ElementMobile {
+public class ElementMobile implements MMEntity {
 	Deplacement depl;
 	Point position;
 	EventHandler eventHandler;
@@ -91,6 +91,12 @@ public class ElementMobile {
 	}
 
 	public void unregisterBaliseParSatellite(Balise b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
 		// TODO Auto-generated method stub
 		
 	}
