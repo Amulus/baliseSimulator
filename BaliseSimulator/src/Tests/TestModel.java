@@ -84,9 +84,9 @@ public class TestModel {
 		Satelitte sat = new Satelitte(100000);
 		sat.setPosition(new Point(10, 50));
 		sat.setDeplacement(new DeplSatellite(-10, 1000, 2));
-		manager.addBalise(bal);
+		manager.addElementMobile(bal);
 		manager.tick();
-		manager.addSatellite(sat);
+		manager.addElementMobile(sat);
 		manager.tick();
 		
 //		System.out.println(sat.getPosition().x+" ,"+sat.getPosition().y);
