@@ -1,15 +1,7 @@
 package metamodel;
 
-public class Command implements MMEntity {
+public abstract class Command implements MMEntity {
 
-	public Command() {
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void accept(Visitor visitor) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void accept (Visitor visitor);
 
 }

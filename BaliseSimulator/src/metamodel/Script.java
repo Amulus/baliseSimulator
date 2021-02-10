@@ -7,7 +7,7 @@ public class Script implements MMEntity {
 	
 	List<Command> commandList;
 	
-	public Script(ArrayList<Command> commands) {
+	public Script(List<Command> commands) {
 		// TODO Auto-generated constructor stub
 		this.commandList = commands;
 	}
