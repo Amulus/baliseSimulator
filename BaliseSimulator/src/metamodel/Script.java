@@ -1,6 +1,5 @@
 package metamodel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Script implements MMEntity {
@@ -15,7 +14,7 @@ public class Script implements MMEntity {
 	@Override
 	public void accept(Visitor visitor) {
 		// TODO Auto-generated method stub
-
+		visitor.visitScript(this);
 	}
 
 }

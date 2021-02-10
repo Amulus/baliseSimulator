@@ -29,10 +29,6 @@ public class Assign extends Command implements MMEntity {
 		this.value = value;
 	}
 
-	public Assign(String text, String text2) {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public void accept(Visitor visitor) {
 		visitor.visitAssign(this);
